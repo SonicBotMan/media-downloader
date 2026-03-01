@@ -1,0 +1,24 @@
+{
+  "name": "media-downloader",
+  "version": "1.0.0",
+  "description": "Download images and videos from webpages and save to WebDAV server",
+  "main": "scripts/media-downloader.py",
+  "scripts": {
+    "download": "python3 scripts/media-downloader.py"
+  },
+  "keywords": [
+    "download",
+    "media",
+    "image",
+    "video",
+    "webdav",
+    "cloud"
+  ],
+  "env": {
+    "WEBDAV_URL": "Required - WebDAV server URL",
+    "WEBDAV_USER": "Required - WebDAV username",
+    "WEBDAV_PASSWORD": "Required - WebDAV password"
+  },
+  "author": "Yuhua",
+  "license": "MIT"
+}

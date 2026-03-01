@@ -5,8 +5,8 @@
 | 项目 | 值 |
 |------|-----|
 | WebDAV URL | http://192.168.11.147:5005 |
-| 用户名 | h523034406 |
-| 密码 | He5845211314 |
+| 用户名 | admin |
+| 密码 | password |
 | AI 工作目录 | /openclaw/ |
 
 ## 常用目录
@@ -24,7 +24,7 @@
 ### 上传文件
 
 ```bash
-curl -u h523034406:He5845211314 \
+curl -u admin:password \
   "http://192.168.11.147:5005/openclaw/filename" \
   -T /local/file/path
 ```
@@ -32,7 +32,7 @@ curl -u h523034406:He5845211314 \
 ### 下载文件
 
 ```bash
-curl -u h523034406:He5845211314 \
+curl -u admin:password \
   "http://192.168.11.147:5005/openclaw/filename" \
   -o /local/save/path
 ```
@@ -40,7 +40,7 @@ curl -u h523034406:He5845211314 \
 ### 列出目录
 
 ```bash
-curl -u h523034406:He5845211314 \
+curl -u admin:password \
   "http://192.168.11.147:5005/openclaw/" \
   -X PROPFIND -H "Depth: 1"
 ```
@@ -48,7 +48,7 @@ curl -u h523034406:He5845211314 \
 ### 创建目录
 
 ```bash
-curl -u h523034406:He5845211314 \
+curl -u admin:password \
   "http://192.168.11.147:5005/openclaw/newdir/" \
   -X MKCOL
 ```
@@ -56,7 +56,7 @@ curl -u h523034406:He5845211314 \
 ### 删除文件
 
 ```bash
-curl -u h523034406:He5845211314 \
+curl -u admin:password \
   "http://192.168.11.147:5005/openclaw/filename" \
   -X DELETE
 ```
@@ -71,8 +71,8 @@ curl -u h523034406:He5845211314 \
     "defaults": {
       "env": {
         "WEBDAV_URL": "http://192.168.11.147:5005",
-        "WEBDAV_USER": "h523034406",
-        "WEBDAV_PASSWORD": "He5845211314"
+        "WEBDAV_USER": "admin",
+        "WEBDAV_PASSWORD": "password"
       }
     }
   }

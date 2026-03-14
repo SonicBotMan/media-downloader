@@ -1,7 +1,7 @@
 ---
 name: media-downloader
 description: Download images and videos from any webpage and save to WebDAV. Supports Twitter/X, YouTube, Instagram, TikTok. Features concurrent downloads, deduplication, and resume support.
-version: 3.0.0
+version: 3.2.0
 metadata:
   openclaw:
     requires:

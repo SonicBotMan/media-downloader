@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Media Downloader v3.2 - Download images and videos from webpages and save to WebDAV
+Media Downloader v3.2.0 - Download images and videos from webpages and save to WebDAV
 
 Features:
 - Twitter/X support via fxtwitter API
@@ -27,10 +27,14 @@ from html.parser import HTMLParser
 
 import requests
 
-# WebDAV configuration
-WEBDAV_URL = os.environ.get("WEBDAV_URL", "http://192.168.11.147:5005")
-WEBDAV_USER = os.environ.get("WEBDAV_USER", "h523034406")
-WEBDAV_PASSWORD = os.environ.get("WEBDAV_PASSWORD", "He5845211314")
+# WebDAV configuration (required env vars)
+WEBDAV_URL = os.environ.get("WEBDAV_URL")
+WEBDAV_USER = os.environ.get("WEBDAV_USER")
+WEBDAV_PASSWORD = os.environ.get("WEBDAV_PASSWORD")
+
+if not all([WEBDAV_URL, WEBDAV_USER, WEBDAV_PASSWORD]):
+    print("Error: WEBDAV_URL, WEBDAV_USER, and WEBDAV_PASSWORD must be set", file=sys.stderr)
+    sys.exit(1)
 
 # TikHub API key for Douyin
 TIKHUB_API_KEY = os.environ.get("TIKHUB_API_KEY") or open(os.path.expanduser("~/.openclaw/tikhub_api_key.txt")).read().strip() if os.path.exists(os.path.expanduser("~/.openclaw/tikhub_api_key.txt")) else None
@@ -638,8 +642,8 @@ def main():
     parser.add_argument('--workers', type=int, default=3, help='Concurrent downloads')
     parser.add_argument('--skip-dup', action='store_true', default=True, help='Skip duplicates')
     parser.add_argument('--no-skip-dup', action='store_true', help='Download even if duplicate')
-    parser.add_argument('--no-watermark', action='store_true', default=False, help='Remove watermark (Douyin, default: keep watermark)')
-    parser.add_argument('--with-watermark', action='store_true', help='Keep watermark (Douyin, this is the default)')
+    parser.add_argument('--no-watermark', action='store_true', default=True, help='Remove watermark (Douyin, default: True)')
+    parser.add_argument('--keep-watermark', action='store_true', help='Keep watermark (Douyin)')
     parser.add_argument('--cookies', type=str, help='Cookies file for Douyin/TikTok')
     parser.add_argument('--json', action='store_true')
     parser.add_argument('--quiet', action='store_true')
@@ -699,7 +703,7 @@ def main():
     
     # Single URL
     elif args.url:
-        no_watermark = args.no_watermark
+        no_watermark = args.no_watermark and not args.keep_watermark  # --keep-watermark overrides
         cookies_file = args.cookies
         result, error = process_url(
             args.url, output_dir, args.filename, 

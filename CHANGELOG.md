@@ -23,8 +23,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 📚 Documentation
 - Updated README with environment variable requirements
+- Updated SKILL.md with Douyin support and watermark parameters
 - Added RELEASE_NOTES.md with detailed upgrade instructions
-- Created CHANGELOG.md
+- Created CHANGELOG.md (Keep a Changelog format)
 
 ### ✅ Testing
 - 4-layer validation: Syntax, Import, Behavior, Regression

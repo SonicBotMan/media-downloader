@@ -87,16 +87,21 @@ python3 scripts/media-downloader.py --url "xxx" --output "/openclaw/" --no-skip-
 
 | 参数 | 默认值 | 说明 |
 |------|--------|------|
-| `--url` | - | 单个 URL |
-| `--urls` | - | 逗号分隔的 URL 列表 |
-| `--output` | - | WebDAV 目标目录 |
-| `--workers` | 3 | 并发下载数 |
+| `--url` | - | 单个 URL（支持 Twitter/YouTube/Instagram/TikTok/Douyin） |
+| `--urls` | - | 逗号分隔的 URL 列表（批量下载） |
+| `--output` | - | WebDAV 目标目录（必需） |
+| `--filename` | - | 自定义文件名（可选） |
+| `--workers` | 3 | 并发下载数（批量模式） |
 | `--max-size` | 100 | 最大文件大小 (MB) |
 | `--timeout` | 60 | 下载超时 (秒) |
-| `--skip-dup` | True | 跳过重复文件 |
+| `--skip-dup` | True | 跳过重复文件（默认） |
 | `--no-skip-dup` | - | 强制重新下载 |
+| `--no-watermark` | True | 去除水印（Douyin，默认开启） |
+| `--keep-watermark` | - | 保留水印（Douyin） |
+| `--cookies` | - | Cookie 文件（Douyin/TikTok，可选） |
 | `--json` | - | JSON 格式输出 |
 | `--quiet` | - | 静默模式 |
+| `--debug` | - | 调试模式 |
 
 ## 支持的平台
 

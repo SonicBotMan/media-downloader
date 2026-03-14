@@ -31,10 +31,33 @@ A powerful media downloader that supports Twitter/X, YouTube, Instagram, TikTok,
 pip3 install --break-system-packages yt-dlp requests
 ```
 
+### Configuration (Required)
+
+**v3.2.0+ requires environment variables:**
+
+```bash
+# Required
+export WEBDAV_URL="http://your-webdav-server:port"
+export WEBDAV_USER="your-username"
+export WEBDAV_PASSWORD="your-password"
+
+# Optional (for Douyin watermark-free downloads)
+export TIKHUB_API_KEY="your-tikhub-api-key"
+```
+
+**Or set in `~/.bashrc` for persistence:**
+
+```bash
+echo 'export WEBDAV_URL="http://192.168.11.147:5005"' >> ~/.bashrc
+echo 'export WEBDAV_USER="h523034406"' >> ~/.bashrc
+echo 'export WEBDAV_PASSWORD="your-password"' >> ~/.bashrc
+source ~/.bashrc
+```
+
 ### Basic Usage
 
 ```bash
-# Twitter/X
+# Twitter/X (auto-extracts all media)
 python3 scripts/media-downloader.py \
   --url "https://x.com/user/status/123456" \
   --output "/openclaw/downloads/"
@@ -43,6 +66,17 @@ python3 scripts/media-downloader.py \
 python3 scripts/media-downloader.py \
   --url "https://www.youtube.com/watch?v=xxx" \
   --output "/openclaw/youtube/"
+
+# Douyin (watermark-free by default)
+python3 scripts/media-downloader.py \
+  --url "https://www.douyin.com/video/xxx" \
+  --output "/openclaw/douyin/"
+
+# Batch download (concurrent)
+python3 scripts/media-downloader.py \
+  --urls "url1,url2,url3" \
+  --output "/openclaw/downloads/" \
+  --workers 5
 ```
 
 ## ⚙️ Arguments
